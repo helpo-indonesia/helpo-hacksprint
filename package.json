@@ -15,6 +15,7 @@
     "react-native": "0.57.7",
     "react-native-router-flux": "^4.0.6",
     "react-native-tabbar-bottom": "^1.0.4",
+    "react-navigation": "^3.0.4",
     "react-redux": "^5.1.1"
   },
   "devDependencies": {

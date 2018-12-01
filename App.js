@@ -7,7 +7,23 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
+
+// Native base material theme
+import { StyleProvider } from 'native-base'
+import getTheme from './native-base-theme/components'
+import material from './native-base-theme/variables/material'
+
+// Router-flux
+import { Router, Scene } from 'react-native-router-flux'
+
+// Screen
+import DashboardApp from './src/components/Dashboard';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -19,12 +35,21 @@ const instructions = Platform.select({
 type Props = {};
 export default class App extends Component<Props> {
   render() {
+
+    let storeInstance = Store();
+
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
+      <StyleProvider style={getTheme(material)}>
+        <Provider store={storeInstance.store}>
+          <PersistGate loading={null} persistor={storeInstance.persistor}>
+          <Router>
+            <Scene key="root">
+              <Scene key="dashboard" component={DashboardApp} hideNavBar={true}/>
+            </Scene>
+          </Router>
+          </PersistGate>
+        </Provider>
+      </StyleProvider>
     );
   }
 }
