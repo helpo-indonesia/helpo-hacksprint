@@ -6,11 +6,16 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
     "ios": "react-native run-ios",
-    "android": "react-native run-android"
+    "android": "react-native run-android",
+    "build-android": "cd android && ./gradlew assembleRelease && cd .."
   },
   "dependencies": {
+    "native-base": "^2.8.1",
     "react": "16.6.1",
-    "react-native": "0.57.7"
+    "react-native": "0.57.7",
+    "react-native-router-flux": "^4.0.6",
+    "react-native-tabbar-bottom": "^1.0.4",
+    "react-redux": "^5.1.1"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
